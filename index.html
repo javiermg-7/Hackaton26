@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calculadora de beneficios · Limpieza costera</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="contenedor">
+    <header>
+      <span class="etiqueta"><img src="logoConNombre.png" alt="logo UNIVERSAL_PLASTIC"></span>
+      <h1>¿Cuánto rinde limpiar tu costa?</h1>
+      <p class="sub">Estima el beneficio de retirar plástico de playas y zonas costeras.</p>
+    </header>
+
+    <section class="tarjeta mapa-tarjeta">
+      <div id="mapa" aria-label="Mapa de localizaciones"></div>
+      <p class="pequeno">Pulsa en una localización para ver sus datos y calcular el beneficio.</p>
+    </section>
+
+    <div id="calculadora" class="oculto">
+    <p class="lugar">📍 <strong id="lugarActual"></strong></p>
+    <div class="modos">
+      <button class="modo activo" data-modo="basico">Básico</button>
+      <button class="modo" data-modo="personalizado">Personalizado</button>
+    </div>
+
+    <section class="tarjeta controles">
+      <div>
+        <div class="fila">
+          <label for="kg">Kilos de plástico</label>
+          <span id="kgValor" class="grande"></span>
+        </div>
+        <input type="range" id="kg" />
+        <div class="fila pequeno"><span id="kgMin"></span><span id="kgMax"></span></div>
+      </div>
+      <div>
+        <label for="localizacion">Localización</label>
+        <select id="localizacion"></select>
+      </div>
+    </section>
+
+    <section class="resultados">
+      <div class="tarjeta"><p>Turismo</p><strong id="turismo"></strong></div>
+      <div class="tarjeta"><p>Pesca</p><strong id="pesca"></strong></div>
+      <div class="tarjeta destacada"><p>Beneficio total</p><strong id="beneficio"></strong></div>
+    </section>
+
+    <section class="pestanas">
+      <button class="pestana" data-tab="turismo">🏖️ Turismo <span id="nTurismo"></span></button>
+      <button class="pestana" data-tab="pesca">🎣 Pesca <span id="nPesca"></span></button>
+    </section>
+    <p id="aviso" class="pequeno">En modo Básico los datos son de solo lectura. Cambia a Personalizado para editarlos.</p>
+    </div>
+  </main>
+
+  <div id="modal" class="modal oculto">
+    <div class="ventana">
+      <button id="cerrar" class="cerrar" aria-label="Cerrar">×</button>
+      <h2 id="modalTitulo"></h2>
+      <p id="modalDesc" class="pequeno"></p>
+      <div id="modalLista"></div>
+      <div id="modalDesglose" class="desglose"></div>
+      <button id="restaurar" class="restaurar">↺ Restaurar valores</button>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

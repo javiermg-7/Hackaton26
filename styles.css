@@ -1,0 +1,78 @@
+:root {
+  --fondo: #eef7f9;
+  --tarjeta: #ffffff;
+  --texto: #16324a;
+  --suave: #5f7787;
+  --primario: #0f6e8c;
+  --acento: #d8f0ee;
+  --borde: #dbe7ec;
+  --sombra: 0 10px 30px -12px rgba(15, 80, 110, 0.25);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  color: var(--texto);
+  background: radial-gradient(ellipse at top, #d3eef2, var(--fondo) 60%);
+  min-height: 100vh;
+}
+.contenedor { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
+h1, h2, .grande, strong { font-family: "Fraunces", serif; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.8rem); margin: 14px 0 8px; line-height: 1.1; }
+.sub, .pequeno { color: var(--suave); }
+.pequeno { font-size: .85rem; }
+.etiqueta { background: rgba(255,255,255,.7); color: var(--primario); padding: 6px 12px; border-radius: 99px; font-size: .85rem; }
+
+.modos { display: inline-flex; background: var(--tarjeta); padding: 4px; border-radius: 99px; box-shadow: var(--sombra); margin: 30px 0 20px; }
+.modo { border: 0; background: none; padding: 9px 20px; border-radius: 99px; cursor: pointer; font: inherit; color: var(--suave); }
+.modo.activo { background: var(--primario); color: #fff; }
+
+.tarjeta { background: var(--tarjeta); border-radius: 24px; padding: 24px; box-shadow: var(--sombra); }
+.controles { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.fila { display: flex; justify-content: space-between; align-items: baseline; }
+label { font-weight: 600; font-size: .9rem; display: block; margin-bottom: 10px; }
+.grande { font-size: 1.6rem; color: var(--primario); }
+input[type=range] { width: 100%; accent-color: var(--primario); margin: 8px 0; }
+select, input[type=number] { width: 100%; padding: 10px 12px; border: 1px solid var(--borde); border-radius: 12px; font: inherit; background: #fff; color: var(--texto); }
+
+.resultados { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+.resultados p { margin: 0; color: var(--suave); font-size: .9rem; }
+.resultados strong { font-size: 1.9rem; display: block; margin-top: 4px; }
+.destacada { background: var(--primario); color: #fff; }
+.destacada p { color: rgba(255,255,255,.8); }
+
+.pestanas { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+.pestana { display: flex; justify-content: space-between; border: 1px solid var(--borde); background: rgba(255,255,255,.7); padding: 20px; border-radius: 24px; font: inherit; font-weight: 600; color: var(--texto); cursor: pointer; transition: .2s; }
+.pestana:hover { background: #fff; box-shadow: var(--sombra); }
+.pestana span { color: var(--suave); font-weight: 400; font-size: .85rem; }
+
+.modal { position: fixed; inset: 0; background: rgba(10, 30, 45, .5); display: flex; align-items: center; justify-content: center; padding: 20px; }
+.oculto { display: none; }
+.ventana { background: #fff; border-radius: 24px; padding: 28px; width: 100%; max-width: 520px; max-height: 85vh; overflow-y: auto; position: relative; }
+.ventana h2 { margin: 0; }
+.cerrar { position: absolute; top: 14px; right: 18px; border: 0; background: none; font-size: 1.6rem; cursor: pointer; color: var(--suave); }
+.param { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--borde); }
+.param p { margin: 0; }
+.param .valor { display: flex; align-items: center; gap: 8px; }
+.param input { width: 110px; text-align: right; }
+.param input:disabled { background: #f3f6f8; }
+.restaurar { margin-top: 14px; border: 0; background: var(--acento); color: var(--primario); padding: 8px 14px; border-radius: 10px; cursor: pointer; font: inherit; }
+
+
+img {
+  max-width: 50%;
+  height: auto;
+}   
+
+@media (max-width: 700px) {
+  .controles, .resultados, .pestanas { grid-template-columns: 1fr; }
+}
+.param .sim { font-family: "Fraunces", serif; color: var(--primario); }
+.desglose { margin-top: 16px; padding: 14px; background: var(--acento); border-radius: 14px; font-size: .9rem; }
+.desglose div { display: flex; justify-content: space-between; padding: 3px 0; }
+
+.mapa-tarjeta { margin-top: 30px; padding: 12px 12px 4px; }
+#mapa { height: 420px; border-radius: 16px; z-index: 0; }
+.mapa-tarjeta .pequeno { margin: 10px 8px; }
+.lugar { margin: 30px 0 0; font-size: 1.1rem; }
+#calculadora .modos { margin-top: 12px; }
